@@ -27,7 +27,11 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
         WebView webView = (WebView)findViewById(R.id.webView);
         webView.setWebViewClient(new LocalWebClient(this));
-//        webView.loadDataWithBaseURL("/", "<body style='background-color: blue;'></body>", "text/html", "UTF-8", "");
-        webView.loadUrl("https://gotrack.com");
+
+        // does not call onPageFinished with webview v 48
+        webView.loadDataWithBaseURL("/", "<body style='background-color: blue;'></body>", "text/html", "UTF-8", "");
+
+        // calls onPageFinished as expected
+        // webView.loadUrl("https://google.com");
     }
 }
